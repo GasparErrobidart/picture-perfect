@@ -1,0 +1,33 @@
+{
+  "name": "picture-perfect",
+  "version": "1.0.0",
+  "description": "Enable images using srcset to load a tiny image for preview and insert the corresponding image when the user scrolls near the image element. It uses srcset to find the optimal image size and provides an automated size attribute assignation.",
+  "main": "main.js",
+  "scripts": {
+    "minify": "uglifyjs main.js --output main.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GasparErrobidart/Lazy-loading-size.git"
+  },
+  "keywords": [
+    "responsive",
+    "images",
+    "srcset",
+    "lazyloading",
+    "lazy",
+    "loading",
+    "size",
+    "window",
+    "scroll"
+  ],
+  "author": "Gaspar G. Errobidart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GasparErrobidart/Lazy-loading-size/issues"
+  },
+  "homepage": "https://github.com/GasparErrobidart/Lazy-loading-size#readme",
+  "devDependencies": {
+    "uglify-js": "^3.6.0"
+  }
+}
