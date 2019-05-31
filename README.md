@@ -53,6 +53,8 @@ Now you can start using the perfect picture:
   data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
   data-densities="0.5,1,2,3,4"
   data-automatic-sizes="true"
+  data-automatic-srcset="true"
+  proximityThreshold="400"
 >
 
   <!--
