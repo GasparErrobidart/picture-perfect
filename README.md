@@ -13,7 +13,7 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 - ✔ Automatic srcset with multiple pixel densities.
 - ✔ Specify multiple formats.
 - ✔ Specify custom media rules.
-- ✔ URL string interpolation, enabling performance budget.
+- ✔ URL string interpolation, gives you control to work on a performance budget.
 - ✔ Extends your base sizes and srcset configuration.
 - ✔ Art direction, use the native picture features.
 
