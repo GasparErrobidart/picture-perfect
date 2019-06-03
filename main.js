@@ -9,7 +9,8 @@ function PicturePerfect(img){
     if(node.tagName && node.tagName == "SOURCE"){
       sources.push({
         dom : node,
-        format : node.getAttribute("type").replace("image/","")
+        format : node.getAttribute("type").replace("image/",""),
+        originalSrcset : node.getAttribute('srcset') || ""
       })
     }
   };
@@ -19,7 +20,6 @@ function PicturePerfect(img){
   var automaticSrcset     = picture.getAttribute("data-automatic-srcset") == "false" || true;
   var densities 		      = (picture.getAttribute('data-densities') || ["1"]).split(",").map( function(n) {return parseFloat(n)});
   var url						      = picture.getAttribute('data-dynamic-url') || new Error("'data-dynamic-url' must be provided.");
-  var originalSrcset			= picture.getAttribute('srcset') || "";
 
   // GET HAND PICKED ELEMENT SIZE
   function handPickSizeFor(){
@@ -49,7 +49,7 @@ function PicturePerfect(img){
           .replace(/\$\{width\}/gi , width ) +" "+ width +"w";
       }).join(",");
       // CONCATE THE ORIGNAL SRCSET IF THERE'S ONE
-      if(originalSrcset) srcset += "," + originalSrcset;
+      if(source.originalSrcset) srcset += "," + source.originalSrcset;
       source.dom.setAttribute("srcset",srcset);
     });
   }

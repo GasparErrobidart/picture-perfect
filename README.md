@@ -3,7 +3,7 @@ A tiny code snippet that enhances the picture HTML element.
 Reduce your pages initial load times around 90%, without compromising your users experience.
 Let Picture Perfect calculate the srcset and sizes of your images.
 
-[Live demo](https://jsfiddle.net/8ab0xnef/)
+[Live demo](https://jsfiddle.net/7hxt3q8b/1/)
 
 ## Features
 - ✔ Lazy loading.
