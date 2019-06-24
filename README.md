@@ -31,7 +31,6 @@ Now you can start using the perfect picture:
   You can provide options as HTML attribute for this tag:
 
   [data-dynamic-url]
-    !Mandatory
     ${format} will be replaced dinamically with the current image format
     ${width} will be replaced dinamically with the current element width
   [data-densities]
@@ -61,6 +60,8 @@ Now you can start using the perfect picture:
     Here you can provide native source HTML elements, use media attributes and define srcset,size and type.
     For each source Picture Perfect will automatically calculate srcset and sizes based on your configuration.
     This allows you to specify multiple file formats and rules to display them.
+    You can also add a "data-srcset" attribute, when the element gets close to the viewport the value of this
+    attribute will be combined with the true srcset preventing larger images to load on the initial page load.
   -->
   <source srcset="https://placehold.it/50x50.webp?text=50x50+webp" type="image/webp">
   <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg" type="image/jpeg">

@@ -10,7 +10,8 @@ function PicturePerfect(img){
       sources.push({
         dom : node,
         format : node.getAttribute("type").replace("image/",""),
-        originalSrcset : node.getAttribute('srcset') || ""
+        originalSrcset : node.getAttribute('srcset') || "",
+        originalDataSrcset : node.getAttribute('data-srcset') || ""
       })
     }
   };
@@ -18,8 +19,8 @@ function PicturePerfect(img){
   var proximityThreshold  = picture.getAttribute("data-threshold") || window.innerHeight/2;
   var automaticSizes      = picture.getAttribute("data-automatic-sizes") == "false" || true;
   var automaticSrcset     = picture.getAttribute("data-automatic-srcset") == "false" || true;
-  var densities 		      = (picture.getAttribute('data-densities') || ["1"]).split(",").map( function(n) {return parseFloat(n)});
-  var url						      = picture.getAttribute('data-dynamic-url') || new Error("'data-dynamic-url' must be provided.");
+  var densities 		      = (picture.getAttribute('data-densities') || "1").split(",").map( function(n) {return parseFloat(n)});
+  var url						      = picture.getAttribute('data-dynamic-url') || "";
 
   // GET HAND PICKED ELEMENT SIZE
   function handPickSizeFor(){
@@ -41,16 +42,21 @@ function PicturePerfect(img){
     var elementWidth 	= Math.ceil(img.getBoundingClientRect().width);
     sources.forEach(function(source){
       var format = source.format;
+      var srcset = [];
       // GENERATE THE SRCSET FOR THIS SPECIFIC WIDTH
-      var srcset = densities.map(function(n){
-        var width = Math.ceil(elementWidth * n);
-        return url
-          .replace(/\$\{format\}/gi, format.replace(/jpeg/gi,"jpg") )
-          .replace(/\$\{width\}/gi , width ) +" "+ width +"w";
-      }).join(",");
+      if(url && automaticSrcset ){
+        srcset = densities.map(function(n){
+          var width = Math.ceil(elementWidth * n);
+          return url
+            .replace(/\$\{format\}/gi, format.replace(/jpeg/gi,"jpg") )
+            .replace(/\$\{width\}/gi , width ) +" "+ width +"w";
+        });
+      }
+
       // CONCATE THE ORIGNAL SRCSET IF THERE'S ONE
-      if(source.originalSrcset) srcset += "," + source.originalSrcset;
-      source.dom.setAttribute("srcset",srcset);
+      if(source.originalSrcset) srcset.push(source.originalSrcset);
+      if(source.originalDataSrcset) srcset.push(source.originalDataSrcset);
+      source.dom.setAttribute("srcset",srcset.join(','));
     });
   }
 
@@ -59,7 +65,7 @@ function PicturePerfect(img){
     if(automaticSizes) setElementSizes(img);
     if(maxWindowSize < window.innerWidth){
       maxWindowSize = window.innerWidth;
-      if(automaticSrcset) updateSources();
+      updateSources();
     }
   }
 
@@ -68,7 +74,7 @@ function PicturePerfect(img){
   var onProximity = function(){
     // CALCULATE ELEMENT SIZES ATTRIBUTE
     if(automaticSizes) setElementSizes();
-    if(automaticSrcset) updateSources();
+    updateSources();
     var tmo;
     window.addEventListener("resize",function(){
     	clearTimeout(tmo);
