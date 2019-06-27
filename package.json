@@ -1,6 +1,6 @@
 {
   "name": "picture-perfect",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Enable images using srcset to load a tiny image for preview and insert the corresponding image when the user scrolls near the image element. It uses srcset to find the optimal image size and provides an automated size attribute assignation.",
   "main": "main.js",
   "scripts": {

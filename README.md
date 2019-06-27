@@ -76,26 +76,37 @@ Now you can start using the perfect picture:
 </picture>
 ```
 
-To initialize the plugin you can do it globally at the page load event or one by one for each image
+## Initializing
 
+#### Just in time
+
+To initialize the plugin you can do it globally at the page load event or one by one for each image
+Initializing `PicturePerfect` this way requires you to load the code on the `<head>`.
 ```HTML
 <!-- ONE BY ONE AS THE ELEMENTS GET LOADED (RECOMMENDED) -->
 ...
   <picture>
-    <img onload="PicturePerfect(this)" make-picture-perfect src="myimage.jpg" alt="test-image">
+    <img onload="JIT_PICTURE_PERFECT(this)" src="myimage.jpg" alt="test-image">
   </picture>
 ...
 ```
 
+#### Vanilla javascript at page load
+
 ```javascript
 // GLOBALLY INITIATED
 window.addEventListener('load',function(){
-  document.querySelectorAll('picture > img[make-picture-perfect]').forEach(PicturePerfect);
+  document.querySelectorAll('picture > img').forEach(PicturePerfect);
 });
 
+```
+
+#### jQuery at page load
+
+```javascript
 // GLOBALLY INITIATED USING JQUERY
 $(document).ready(function(){
-  $('picture > img[make-picture-perfect]').each(function(){
+  $('picture > img').each(function(){
     new PicturePerfect(this);
   })
 })

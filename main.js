@@ -100,3 +100,8 @@ function PicturePerfect(img){
   onScroll();
 
 }
+
+var JIT_PICTURE_PERFECT = function(el){
+  new PicturePerfect(el);
+  el.onload = null;
+}
