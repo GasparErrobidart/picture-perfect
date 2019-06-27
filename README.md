@@ -76,6 +76,32 @@ Now you can start using the perfect picture:
 </picture>
 ```
 
+To initialize the plugin you can do it globally at the page load event or one by one for each image
+
+```HTML
+<!-- ONE BY ONE AS THE ELEMENTS GET LOADED (RECOMMENDED) -->
+...
+  <picture>
+    <img onload="PicturePerfect(this)" make-picture-perfect src="myimage.jpg" alt="test-image">
+  </picture>
+...
+```
+
+```javascript
+// GLOBALLY INITIATED
+window.addEventListener('load',function(){
+  document.querySelectorAll('picture > img[make-picture-perfect]').forEach(PicturePerfect);
+});
+
+// GLOBALLY INITIATED USING JQUERY
+$(document).ready(function(){
+  $('picture > img[make-picture-perfect]').each(function(){
+    new PicturePerfect(this);
+  })
+})
+
+```
+
 ## Support for old browsers
 
 You can use [Picture fill](https://scottjehl.github.io/picturefill/) to support the <picture> tag on older browsers.

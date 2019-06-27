@@ -100,12 +100,3 @@ function PicturePerfect(img){
   onScroll();
 
 }
-
-(function(){
-
-  window.addEventListener('load',function(){
-    // WATCH FOR ELEMENTS
-    document.querySelectorAll('picture > img[make-picture-perfect]').forEach(PicturePerfect);
-  });
-
-})();
