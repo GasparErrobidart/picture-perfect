@@ -54,7 +54,7 @@ Now you can start using the perfect picture:
   data-densities="0.5,1,2,3,4"
   data-automatic-sizes="true"
   data-automatic-srcset="true"
-  proximityThreshold="window.innerHeight / 3"
+  data-threshold="window.innerHeight / 3"
 >
 
   <!--
