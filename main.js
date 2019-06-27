@@ -16,7 +16,12 @@ function PicturePerfect(img){
     }
   };
 
-  var proximityThreshold  = picture.getAttribute("data-threshold") || window.innerHeight/2;
+  var proximityThreshold  = window.innerHeight/2;
+  try {
+    proximityThreshold = eval(picture.getAttribute("data-threshold")) || proximityThreshold
+  } catch(e){
+    console.log(e)
+  };
   var automaticSizes      = picture.getAttribute("data-automatic-sizes") == "false" || true;
   var automaticSrcset     = picture.getAttribute("data-automatic-srcset") == "false" || true;
   var densities 		      = (picture.getAttribute('data-densities') || "1").split(",").map( function(n) {return parseFloat(n)});

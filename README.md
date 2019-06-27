@@ -47,13 +47,14 @@ Now you can start using the perfect picture:
     How many pixels before the element gets into the viewport will trigger the lazy loader.
     Default: window.innerHeight/2
     e.g.: "300" (pixels)
+    e.g.: "window.innerHeight / 3" (script to eval)
 -->
 <picture
   data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
   data-densities="0.5,1,2,3,4"
   data-automatic-sizes="true"
   data-automatic-srcset="true"
-  proximityThreshold="400"
+  proximityThreshold="window.innerHeight / 3"
 >
 
   <!--
