@@ -101,6 +101,7 @@ function PicturePerfect(img){
 
 }
 
+// WRAPPER FOR EXECUTING JUST IN TIME INITIALIZATION
 var JIT_PICTURE_PERFECT = function(el){
   new PicturePerfect(el);
   el.onload = null;
