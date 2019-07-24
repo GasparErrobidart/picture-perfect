@@ -94,8 +94,8 @@ function PicturePerfect(img){
   function simulateBG(img){
     if(!container) container = img.closest('.mimic-background-container');
     if(!container) return false;
-
     if(bgWrapper){
+
       var bgCover             = bgWrapper.style.backgroundSize == "cover";
       var bgContain           = bgWrapper.style.backgroundSize == "contain";
       var bgHorizontal        = 'center';
@@ -112,6 +112,20 @@ function PicturePerfect(img){
       var a = container.getBoundingClientRect();
       var b = img.getBoundingClientRect();
 
+      // MIMIC BACKGROUND COVER
+      if(bgCover){
+
+      }
+
+      // MIMIC BACKGROUND CONTAIN
+      else if(bgContain){
+
+      }
+
+
+
+
+      // MIMI BACKGROUND POSITION
       if(typeof bgHorizontal == "number"){
         img.style.marginLeft = bgHorizontal + "px";
       }else if( bgHorizontal == 'left'){
@@ -133,7 +147,6 @@ function PicturePerfect(img){
       }
 
     }
-
   }
 
   // ON VIEWPORT RESIZE
