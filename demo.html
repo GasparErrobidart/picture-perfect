@@ -4,13 +4,57 @@
   <meta charset="UTF-8">
   <title>Picture Perfect</title>
   <link rel="stylesheet" href="demo.css">
-  <script src="main.min.js"></script>
+  <!--
+    FOR THIS DEMO WE LINK THIS NEXT 2 FILES BUT
+    WE HIGHLY RECOMMEND INSERTING THE CONTENT AS INLINED CODE BOTH CSS AND JS
+
+    ALSO YOU DON'T NEED TO INCLUDE THE CSS IF YOU DON'T NEED TO MIMIC BACKGROUND IMAGE BEHAVIOUR
+  -->
+  <link rel="stylesheet" href="picture-perfect.css">
+  <script src="picture-perfect.js"></script>
+
+
 </head>
 <body>
 
 <!--- EXAMPLE STARTS HERE --->
 
 <div class="test">
+
+
+
+  <div class="col">
+    <div class="col">
+
+      <div class="mimic-background-container">
+        <h1 style="padding:600px 0;position:relative;z-index:1">I COULD BE A HERO</h1>
+        <div class="cover bg-image-wrapper">
+          <picture
+            data-dynamic-url="https://placehold.it/${width}x600.${format}?text=${width}x600+${format}"
+            data-densities="0.5,1,2,3,4"
+            data-automatic-sizes="true"
+          >
+            <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+            <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+            <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+          </picture>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="separator"></div>
 
   <div class="col">
     <div class="col col3">

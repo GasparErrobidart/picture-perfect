@@ -4,7 +4,7 @@
   "description": "Enable images using srcset to load a tiny image for preview and insert the corresponding image when the user scrolls near the image element. It uses srcset to find the optimal image size and provides an automated size attribute assignation.",
   "main": "main.js",
   "scripts": {
-    "minify": "uglifyjs main.js --output main.min.js -c -m"
+    "minify": "uglifyjs picture-perfect.js --output picture-perfect.min.js -c -m"
   },
   "repository": {
     "type": "git",
