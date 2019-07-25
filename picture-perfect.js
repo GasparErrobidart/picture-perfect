@@ -113,42 +113,56 @@ function PicturePerfect(img){
       var a = container.getBoundingClientRect();
       var b = img.getBoundingClientRect();
       var width_if_height_was_100 = (b.width/b.height) * a.height;
+      var height_if_width_was_100 = (b.height/b.width) * a.width;
+      var newWidth = a.width;
+      var newHeight = a.height;
 
 
       // MIMIC BACKGROUND COVER
       if(bgCover){
+        if(width_if_height_was_100 >= a.width){
+          newWidth = width_if_height_was_100;
+        }else{
+          newHeight = (b.height/b.width) * a.width;
+        }
         img.style.width   = width_if_height_was_100 >= a.width  ? "auto" : "100%";
         img.style.height  = width_if_height_was_100 >= a.width  ? "100%" : "auto";
       }
 
       // MIMIC BACKGROUND CONTAIN
       else if(bgContain){
+        if(width_if_height_was_100 >= a.width){
+          newHeight = (b.height/b.width) * a.width;
+        }else{
+          newWidth = width_if_height_was_100;
+        }
         img.style.width   = width_if_height_was_100 >= a.width  ? "100%" : "auto";
         img.style.height  = width_if_height_was_100 >= a.width  ? "auto" : "100%";
       }
 
 
 
+      console.log("bgPosition",bgHorizontal,bgVertical);
 
       // MIMI BACKGROUND POSITION
       if(typeof bgHorizontal == "number"){
-        img.style.marginLeft = bgHorizontal + "px";
+        img.style.left = bgHorizontal + "px";
       }else if( bgHorizontal == 'left'){
-        img.style.marginLeft = 0 + "px";
+        img.style.left = 0 + "px";
       }else if( bgHorizontal == 'right'){
-        img.style.marginLeft = (a.width  - b.width) + "px";
+        img.style.left = (a.width  - newWidth) + "px";
       }else{
-        img.style.marginLeft = ( (a.width  - b.width)  / 2 )+ "px";
+        img.style.left = ( (a.width  - newWidth)  / 2 )+ "px";
       }
 
       if(typeof bgVertical == "number"){
-        img.style.marginTop = bgVertical + "px";
+        img.style.top = bgVertical + "px";
       }else if( bgVertical == 'left'){
-        img.style.marginTop = 0 + "px";
+        img.style.top = 0 + "px";
       }else if( bgVertical == 'right'){
-        img.style.marginTop = (a.height  - b.height) + "px";
+        img.style.top = (a.height  - newHeight) + "px";
       }else{
-        img.style.marginTop = ( (a.height  - b.height)  / 2 )+ "px";
+        img.style.top = ( (a.height  - newHeight)  / 2 )+ "px";
       }
 
     }
