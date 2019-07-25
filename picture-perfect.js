@@ -96,11 +96,12 @@ function PicturePerfect(img){
     if(!container) return false;
     if(bgWrapper){
 
-      var bgCover             = bgWrapper.style.backgroundSize == "cover";
-      var bgContain           = bgWrapper.style.backgroundSize == "contain";
+      var style               = bgWrapper.currentStyle || window.getComputedStyle(bgWrapper);
+      var bgCover             = style.backgroundSize == "cover";
+      var bgContain           = style.backgroundSize == "contain";
       var bgHorizontal        = 'center';
       var bgVertical          = 'center';
-      var bgPosition          = bgWrapper.style.backgroundPosition.split(" ");
+      var bgPosition          = style.backgroundPosition.split(" ");
 
       if(bgPosition.length > 2){
         if(['left','center','right'].indexOf(bgPosition[0]) > -1) bgHorizontal = bgPosition[0];
@@ -111,15 +112,19 @@ function PicturePerfect(img){
 
       var a = container.getBoundingClientRect();
       var b = img.getBoundingClientRect();
+      var width_if_height_was_100 = (b.width/b.height) * a.height;
+
 
       // MIMIC BACKGROUND COVER
       if(bgCover){
-
+        img.style.width   = width_if_height_was_100 >= a.width  ? "auto" : "100%";
+        img.style.height  = width_if_height_was_100 >= a.width  ? "100%" : "auto";
       }
 
       // MIMIC BACKGROUND CONTAIN
       else if(bgContain){
-
+        img.style.width   = width_if_height_was_100 >= a.width  ? "100%" : "auto";
+        img.style.height  = width_if_height_was_100 >= a.width  ? "auto" : "100%";
       }
 
 
