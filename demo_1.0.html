@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Picture Perfect</title>
+  <link rel="stylesheet" href="demo.css">
+  <!--
+    FOR THIS DEMO WE LINK THIS NEXT 2 FILES BUT
+    WE HIGHLY RECOMMEND INSERTING THE CONTENT AS INLINED CODE BOTH CSS AND JS
+
+    ALSO YOU DON'T NEED TO INCLUDE THE CSS IF YOU DON'T NEED TO MIMIC BACKGROUND IMAGE BEHAVIOUR
+  -->
+  <link rel="stylesheet" href="picture-perfect.css">
+  <script src="picture-perfect.js"></script>
+
+
+</head>
+<body>
+
+<!--- EXAMPLE STARTS HERE --->
+
+<div class="test">
+
+
+
+        <div class="col">
+          <div class="col">
+
+            <div style="height:100px" class="mimic-background-container">
+
+              <div class="cover bg-image-wrapper" style="background-size:contain">
+                <picture
+                  data-dynamic-url="https://placehold.it/800x300.${format}?text=800x300+${format}"
+                  data-densities="0.5,1,2,3,4"
+                  data-automatic-sizes="true"
+                >
+                  <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                  <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                  <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+                </picture>
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class="col">
+
+            <div style="height:200px" class="mimic-background-container">
+
+              <div class="cover bg-image-wrapper" style="background-size:contain">
+                <picture
+                  data-dynamic-url="https://placehold.it/800x300.${format}?text=800x300+${format}"
+                  data-densities="0.5,1,2,3,4"
+                  data-automatic-sizes="true"
+                >
+                  <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                  <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                  <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+                </picture>
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class="col">
+
+            <div style="height:400px" class="mimic-background-container">
+
+              <div class="cover bg-image-wrapper" style="background-size:contain">
+                <picture
+                  data-dynamic-url="https://placehold.it/800x300.${format}?text=800x300+${format}"
+                  data-densities="0.5,1,2,3,4"
+                  data-automatic-sizes="true"
+                >
+                  <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                  <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                  <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+                </picture>
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class="col">
+
+            <div style="height:600px" class="mimic-background-container">
+
+              <div class="cover bg-image-wrapper" style="background-size:contain;background-position:20px bottom">
+                <picture
+                  data-dynamic-url="https://placehold.it/800x300.${format}?text=800x300+${format}"
+                  data-densities="0.5,1,2,3,4"
+                  data-automatic-sizes="true"
+                >
+                  <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                  <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                  <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+                </picture>
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+        <div class="separator"></div>
+
+
+
+
+
+      <div class="col">
+        <div class="col col3">
+
+          <div style="height:100px" class="mimic-background-container">
+
+            <div class="cover bg-image-wrapper">
+              <picture
+                data-dynamic-url="https://placehold.it/220x500.${format}?text=220x500+${format}"
+                data-densities="0.5,1,2,3,4"
+                data-automatic-sizes="true"
+              >
+                <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+              </picture>
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col col3">
+
+          <div style="height:200px" class="mimic-background-container">
+
+            <div class="cover bg-image-wrapper">
+              <picture
+                data-dynamic-url="https://placehold.it/220x500.${format}?text=220x500+${format}"
+                data-densities="0.5,1,2,3,4"
+                data-automatic-sizes="true"
+              >
+                <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+              </picture>
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col col3">
+
+          <div style="height:400px" class="mimic-background-container">
+
+            <div class="cover bg-image-wrapper">
+              <picture
+                data-dynamic-url="https://placehold.it/220x500.${format}?text=220x500+${format}"
+                data-densities="0.5,1,2,3,4"
+                data-automatic-sizes="true"
+              >
+                <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+              </picture>
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col col3">
+
+          <div style="height:600px" class="mimic-background-container">
+
+            <div class="cover bg-image-wrapper" style="background-size:contain;background-position:center center">
+              <picture
+                data-dynamic-url="https://placehold.it/220x500.${format}?text=220x500+${format}"
+                data-densities="0.5,1,2,3,4"
+                data-automatic-sizes="true"
+              >
+                <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+                <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+                <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+              </picture>
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+
+      <div class="separator"></div>
+
+
+
+    <div class="col">
+      <div class="col">
+
+        <div class="mimic-background-container">
+          <h1 style="padding:50px 0;position:relative;z-index:1">I COULD BE A HERO (Horizontal vs Vertical)</h1>
+          <div class="cover bg-image-wrapper">
+            <picture
+              data-dynamic-url="https://placehold.it/910x100.${format}?text=910x100+${format}"
+              data-densities="0.5,1,2,3,4"
+              data-automatic-sizes="true"
+            >
+              <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+              <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+              <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+            </picture>
+          </div>
+
+
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+    <div class="separator"></div>
+
+
+
+  <div class="col">
+    <div class="col">
+
+      <div class="mimic-background-container">
+        <h1 style="padding:600px 0;position:relative;z-index:1">I COULD BE A HERO (Vertical vs Horizontal)</h1>
+        <div class="cover bg-image-wrapper">
+          <picture
+            data-dynamic-url="https://placehold.it/${width}x600.${format}?text=${width}x600+${format}"
+            data-densities="0.5,1,2,3,4"
+            data-automatic-sizes="true"
+          >
+            <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+            <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+            <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+          </picture>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="separator"></div>
+
+  <div class="col">
+    <div class="col col3">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+      >
+
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col3">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col3">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col3">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+  </div>
+
+
+  <div class="separator"></div>
+
+
+  <div class="col">
+    <div class="col col4">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col4">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col4">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+  </div>
+
+
+  <div class="separator"></div>
+
+
+  <div class="col">
+    <div class="col col6">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+    <div class="col col6">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+
+  </div>
+
+
+  <div class="separator"></div>
+
+
+  <div class="col">
+    <div class="col">
+
+      <picture
+        data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
+        data-densities="0.5,1,2,3,4"
+        data-automatic-sizes="true"
+      >
+        <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
+        <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
+
+        <img onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+
+      </picture>
+
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
