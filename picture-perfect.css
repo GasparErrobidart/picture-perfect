@@ -5,6 +5,7 @@ div.contain {
   height: 250px;
   overflow: hidden;
   position: relative;
+  background-position: center;
 }
 
 img.contain {
@@ -20,6 +21,7 @@ div.cover {
 	left: 0;
 	bottom:0;
 	right:0;
+  background-position: center;
 	background-size: cover;
   width: 100%;
   height: 100%;

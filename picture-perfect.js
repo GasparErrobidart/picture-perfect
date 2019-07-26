@@ -99,16 +99,22 @@ function PicturePerfect(img){
       var style               = bgWrapper.currentStyle || window.getComputedStyle(bgWrapper);
       var bgCover             = style.backgroundSize == "cover";
       var bgContain           = style.backgroundSize == "contain";
-      var bgHorizontal        = 'center';
-      var bgVertical          = 'center';
-      var bgPosition          = style.backgroundPosition.split(" ");
 
-      if(bgPosition.length > 2){
-        if(['left','center','right'].indexOf(bgPosition[0]) > -1) bgHorizontal = bgPosition[0];
-        if(['top','center','bottom'].indexOf(bgPosition[1]) > -1) bgVertical = bgPosition[1];
-        if(bgPosition[0].indexOf('px') > -1) bgHorizontal = parseInt(bgPosition[0].replace('px'));
-        if(bgPosition[1].indexOf('px') > -1) bgVertical   = parseInt(bgPosition[1].replace('px'));
-      }
+      var bgPosition          = style.backgroundPosition.split(" ");
+      var bgHorizontal        = bgPosition[0];
+      var bgVertical          = bgPosition[1];
+
+
+      console.log(bgPosition);
+
+      // if(bgPosition.length >= 2){
+      //   if(bgPosition[0].indexOf('px') > -1) bgHorizontal = parseInt(bgPosition[0].replace('px'));
+      //   else if(bgPosition[0].indexOf('%') > -1) bgHorizontal = parseFloat(bgPosition[0].replace('%'));
+      //   else if(['left','center','right'].indexOf(bgPosition[0]) > -1) bgHorizontal = bgPosition[0];
+      //   if(['top','center','bottom'].indexOf(bgPosition[1]) > -1) bgVertical = bgPosition[1];
+      //   else if(bgPosition[1].indexOf('%') > -1) bgHorizontal = parseFloat(bgPosition[1].replace('%'));
+      //   else if(bgPosition[1].indexOf('px') > -1) bgVertical  = parseInt(bgPosition[1].replace('px'));
+      // }
 
       var a = container.getBoundingClientRect();
       var b = img.getBoundingClientRect();
@@ -145,22 +151,20 @@ function PicturePerfect(img){
       console.log("bgPosition",bgHorizontal,bgVertical);
 
       // MIMI BACKGROUND POSITION
-      if(typeof bgHorizontal == "number"){
-        img.style.left = bgHorizontal + "px";
-      }else if( bgHorizontal == 'left'){
-        img.style.left = 0 + "px";
-      }else if( bgHorizontal == 'right'){
-        img.style.left = (a.width  - newWidth) + "px";
+      if( bgHorizontal.indexOf('px') > -1 ){
+        img.style.left = bgHorizontal;
+      }else if( bgHorizontal.indexOf('%') > -1 ){
+        var percent = parseFloat(bgHorizontal.replace("%",''));
+        img.style.left = ( ( a.width  - newWidth ) *  (percent/100) )+ "px";
       }else{
         img.style.left = ( (a.width  - newWidth)  / 2 )+ "px";
       }
 
-      if(typeof bgVertical == "number"){
-        img.style.top = bgVertical + "px";
-      }else if( bgVertical == 'left'){
-        img.style.top = 0 + "px";
-      }else if( bgVertical == 'right'){
-        img.style.top = (a.height  - newHeight) + "px";
+      if( bgVertical.indexOf('px') > -1 ){
+        img.style.top = bgVertical;
+      }else if( bgVertical.indexOf('%') > -1 ){
+        var percent = parseFloat(bgVertical.replace("%",''));
+        img.style.top = ( ( a.height  - newHeight ) *  (percent/100) )+ "px";
       }else{
         img.style.top = ( (a.height  - newHeight)  / 2 )+ "px";
       }
