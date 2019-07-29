@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Picture Perfect 2 Beta</title>
   <link rel="stylesheet" href="demo.css">
+  <script src="lib/picture-perfect.js"></script>
+  <script src="lib/lazy-load.js"></script>
 </head>
 <body>
 
   <h2>Lazy load</h2>
   <h3>lazy-load-src</h3>
   <img
+
     lazy-load-src="https://placehold.it/2400x2400.jpg?text=2400x2400+JPEG"
     src="https://placehold.it/50x50.jpg?text=50x50+JPEG"
     alt="Lazy load image">
@@ -27,6 +30,13 @@
   <h2>Automatic srcset / pixel density</h2>
   <h2>Art direction</h2>
   <h2>Multiple formats</h2>
+
+  <script>
+    document.querySelectorAll('img').forEach((node)=>{
+      var pp = new PicturePerfect(node);
+      pp.lazyLoad();
+    });
+  </script>
 
 </body>
 </html>
