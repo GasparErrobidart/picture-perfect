@@ -92,12 +92,7 @@ function PicturePerfect(img){
 
   // ON VIEWPORT RESIZE
   var onResize = function(){
-    if(automaticSizes) setElementSizes(img);
     if(mimicBackground) simulateBG(img);
-    if(maxWindowSize < window.innerWidth){
-      maxWindowSize = window.innerWidth;
-      updateSources();
-    }
   }
 
 
