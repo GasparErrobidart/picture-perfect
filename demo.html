@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,58 +16,189 @@
   <script src="lib/picture-perfect.js"></script>
   <script src="lib/lazy-load.js"></script>
   <script src="lib/calculate-size.js"></script>
+  <script src="lib/dynamic-src-and-srcset.js"></script>
+  <script src="lib/mimic-background-image.js"></script>
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/mimic-background-image.css">
   <link rel="stylesheet" href="demo.css">
 
 </head>
 <body>
 
-  <h2>Lazy load</h2>
-  <h3>lazy-load-src</h3>
-  <img
-    onload="JIT_IMG(this)"
-    lazy-src="https://placehold.it/2400x2400.jpg?text=2400x2400+JPEG"
-    src="https://placehold.it/50x50.jpg?text=50x50+JPEG"
-    alt="Lazy load image">
+  <div class="container">
 
-  <h3>lazy-load-srcset</h3>
-  <img
-    onload="JIT_IMG(this)"
-    lazy-srcset="https://placehold.it/2400x2400.jpg?text=2400x2400+JPEG 2400w,https://placehold.it/1200x1200.jpg?text=1200x1200+JPEG 1200w"
-    src="https://placehold.it/50x50.jpg?text=50x50+JPEG"
-    alt="Lazy load image">
 
-  <h2>Automatic Size</h2>
-  <img
-    lazy-src="https://placehold.it/2400x2400.jpg?text=2400x2400+JPEG"
-    src="https://placehold.it/50x50.jpg?text=50x50+JPEG"
-    alt="Lazy load image">
+    <div class="row">
+      <div class="col s12">
+        <h1 style="text-align:center">Picture perfect</h1>
+        <p class="flow-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati rem, quam fuga dolorem asperiores nisi molestias pariatur. Possimus facilis laudantium, nisi praesentium nemo ipsum, nobis quisquam inventore repellendus neque ipsa!</p>
+      </div>
+    </div>
 
-  <picture
-    data-dynamic-url="https://placehold.it/800x300.${format}?text=800x300+${format}"
-    data-densities="0.5,1,2,3,4"
-    data-automatic-sizes="true"
-  >
-    <source srcset="https://placehold.it/50x50.webp?text=50x50+webp 50w" type="image/webp">
-    <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg 50w" type="image/jpeg">
 
-    <img class="cover" onload="JIT_PICTURE_PERFECT(this)" src="https://placehold.it/50x50.jpg?text=50x50+jpeg+fallback">
+    <div class="row">
+      <div class="col s12">
+        <h2>Lazy load</h2>
 
-  </picture>
+        <h3>Lazy image src</h3>
+        <img
+          class="responsive-img"
+          onload="JIT_IMG(this,{calculateSize : false})"
+          lazy-src="https://placehold.it/1920x960.jpg?text=Lazy+Load+1920x960+JPEG"
+          src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+          alt="Lazy image src">
+        <h3>Lazy image srcset</h3>
+        <img
+          class="responsive-img"
+          onload="JIT_IMG(this,{calculateSize : false})"
+          lazy-srcset="https://placehold.it/1500x750.jpg?text=Lazy+Load+1500x750+JPEG 1500w,https://placehold.it/1920x960.jpg?text=Lazy+Load+1920x960+JPEG 1920w,https://placehold.it/2400x1200.jpg?text=Lazy+Load+2400x1200+JPEG 2400w,https://placehold.it/1300x650.jpg?text=Lazy+Load+1300x650+JPEG 1300w,https://placehold.it/640x320.jpg?text=Lazy+Load+640x320+JPEG 640w"
+          src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+          alt="Lazy image srcset"
+          sizes="100w">
 
-  <h2>Automatic src</h2>
-  <h2>Automatic background url</h2>
-  <h2>Automatic srcset / pixel density</h2>
-  <h2>Art direction</h2>
-  <h2>Multiple formats</h2>
+        <h3>Lazy background image</h3>
+        <p class="flow-text">NOTE: This features is not supported by the JIT initialization.</p>
+        <div
+        class="element-with-background"
+        style="background-image:url('https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG')"
+        lazy-background-image="https://placehold.it/1920x960.jpg?text=Lazy+Load+1920x960+JPEG"></div>
 
-  <!-- <script>
-    document.querySelectorAll('img').forEach((node)=>{
-      var pp = new PicturePerfect(node);
-      pp.lazyLoad();
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col s12">
+        <h2>Calculate sizes</h2>
+        <img
+          class="responsive-img"
+          onload="JIT_IMG(this)"
+          lazy-srcset="https://placehold.it/1500x750.jpg?text=Calculate+Sizes+1500x750+JPEG 1500w,https://placehold.it/1920x960.jpg?text=Calculate+Sizes+1920x960+JPEG 1920w,https://placehold.it/2400x1200.jpg?text=Calculate+Sizes+2400x1200+JPEG 2400w,https://placehold.it/1300x650.jpg?text=Calculate+Sizes+1300x650+JPEG 1300w,https://placehold.it/640x320.jpg?text=Calculate+Sizes+640x320+JPEG 640w"
+          src="https://placehold.it/200x100.jpg?text=Calculate+Sizes+200x100+JPEG"
+          alt="Calculate sizes automatically"
+          sizes="1vw">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col s12">
+
+        <h2>Dynamic sources</h2>
+
+        <h3>Dynamic src for images</h3>
+        <img
+          class="responsive-img"
+          onload="JIT_IMG(this)"
+          dynamic-src="https://placehold.it/${width}x${height}.${mime}?text=Dynamic+Source+${width}x${height}+${mime}"
+          src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+          type="image/jpeg"
+          alt="Generate src dynamically">
+
+
+        <h3>Dynamic srcset for images</h3>
+        <img
+          class="responsive-img"
+          onload="JIT_IMG(this)"
+          dynamic-srcset-densities="0.5,1.0,2.0,3.0,4.0"
+          dynamic-srcset="https://placehold.it/${width}x${height}.${mime}?text=Dynamic+Source+${width}x${height}+${mime}"
+          src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+          type="image/jpeg"
+          alt="Generate src dynamically">
+
+
+        <h3>Dynamic srcset for picture tags</h3>
+        <picture
+          dynamic-srcset-densities="0.5,1.0,2.0,3.0,4.0"
+          dynamic-srcset="https://placehold.it/${width}x400.${mime}?text=Dynamic+Source+${width}x400+${mime}">
+          <!-- WEBP VERSIONS FIRST -->
+          <source media="(min-width: 968px)" type="image/webp">
+          <source
+            dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+            type="image/webp">
+          <!-- JPEG VERSIONS LAST -->
+          <source media="(min-width: 968px)" type="image/jpeg">
+          <source
+            dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+            type="image/jpeg">
+          <img
+            class="responsive-img"
+            onload="JIT_IMG(this)"
+            src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+            alt="Generate src dynamically"
+            type="image/jpeg" > <!-- 'type' attribute must be specified always when using dynamic-src, dynamic-srcset or dynamic-background-image -->
+        </picture>
+
+        <h3>Dynamic background image</h3>
+        <p class="flow-text">NOTE: This features is not supported by the JIT initialization.</p>
+        <div
+        class="element-with-background"
+        style="background-image:url('https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG')"
+        dynamic-background-image="https://placehold.it/${width}x${height}.${mime}?text=Dynamic+Source+${width}x${height}+${mime}"
+        type="image/jpeg"
+        ></div>
+
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+
+        <h2>Mimic background image using "img" tags</h2>
+
+        <h3>Background cover</h3>
+
+        <div mimic-background-image-container >
+          <h4  style="padding:175px 40px 300px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+          <div mimic-background-image-wrapper class="cover">
+
+            <picture
+              dynamic-srcset-densities="0.5,1.0,2.0,3.0,4.0"
+              dynamic-srcset="https://placehold.it/${width}x200.${mime}?text=Dynamic+Source+${width}x200+${mime}">
+              <!-- WEBP VERSIONS FIRST -->
+              <source media="(min-width: 968px)" type="image/webp">
+              <source
+                dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+                type="image/webp">
+              <!-- JPEG VERSIONS LAST -->
+              <source media="(min-width: 968px)" type="image/jpeg">
+              <source
+                dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+                type="image/jpeg">
+              <img
+                class="responsive-img"
+                onload="JIT_IMG(this)"
+                src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+                alt="Mimic background"
+                type="image/jpeg" > <!-- 'type' attribute must be specified always when using dynamic-src, dynamic-srcset or dynamic-background-image -->
+            </picture>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col s12">
+        <h2>Automatic srcset / pixel density</h2>
+        <h2>Automatic background url</h2>
+        <h2>Art direction</h2>
+        <h2>Multiple formats</h2>
+
+
+      </div>
+    </div> -->
+  </div>
+  <script>
+    document.querySelectorAll('[lazy-background-image],[dynamic-background-image]').forEach((node)=>{
+      new PicturePerfect(node);
     });
-  </script> -->
+  </script>
 
 </body>
 </html>
