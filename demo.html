@@ -149,15 +149,15 @@
 
         <h2>Mimic background image using "img" tags</h2>
 
-        <h3>Background cover</h3>
+        <h3>Mimic background using picture tags</h3>
 
         <div mimic-background-image-container >
-          <h4  style="padding:175px 40px 300px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+          <h4  style="padding:105px 40px 200px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
           <div mimic-background-image-wrapper class="cover">
 
             <picture
               dynamic-srcset-densities="0.5,1.0,2.0,3.0,4.0"
-              dynamic-srcset="https://placehold.it/${width}x200.${mime}?text=Dynamic+Source+${width}x200+${mime}">
+              dynamic-srcset="https://placehold.it/${width}x400.${mime}?text=Dynamic+Source+${width}x400+${mime}">
               <!-- WEBP VERSIONS FIRST -->
               <source media="(min-width: 968px)" type="image/webp">
               <source
@@ -172,9 +172,61 @@
                 class="responsive-img"
                 onload="JIT_IMG(this)"
                 src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
-                alt="Mimic background"
+                alt="Generate src dynamically"
                 type="image/jpeg" > <!-- 'type' attribute must be specified always when using dynamic-src, dynamic-srcset or dynamic-background-image -->
             </picture>
+
+          </div>
+        </div>
+
+
+
+        <h3>Background cover</h3>
+
+        <div mimic-background-image-container >
+          <h4  style="padding:105px 40px 200px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+          <div mimic-background-image-wrapper class="cover">
+
+            <img
+              class="responsive-img"
+              onload="JIT_IMG(this)"
+              src="https://placehold.it/600x300.jpg?text=Lazy+Load+600x300+JPEG"
+              type="image/jpeg"
+              alt="Generate src dynamically">
+
+          </div>
+        </div>
+
+
+        <h3>Background contain</h3>
+
+        <div mimic-background-image-container >
+          <h4  style="padding:105px 40px 200px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+          <div mimic-background-image-wrapper class="contain">
+
+            <img
+              class="responsive-img"
+              onload="JIT_IMG(this)"
+              src="https://placehold.it/600x300.jpg?text=Lazy+Load+600x300+JPEG"
+              type="image/jpeg"
+              alt="Generate src dynamically">
+
+          </div>
+        </div>
+
+
+        <h3>Background position</h3>
+
+        <div mimic-background-image-container>
+          <h4  style="padding:105px 40px 200px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+          <div mimic-background-image-wrapper class="contain" style="background-position:right bottom">
+
+            <img
+              class="responsive-img"
+              onload="JIT_IMG(this)"
+              src="https://placehold.it/300x300.jpg?text=Lazy+Load+300x300+JPEG"
+              type="image/jpeg"
+              alt="Generate src dynamically">
 
           </div>
         </div>
