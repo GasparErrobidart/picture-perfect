@@ -10,7 +10,8 @@
     "concat-mimic-background": "node concat --files \"lib/picture-perfect.js,lib/mimic-background-image.js\" --output \"mimic-background-image-only.js\"",
     "concat-all": "node concat --files \"lib/picture-perfect.js,lib/lazy-load.js,lib/calculate-size.js,lib/dynamic-src-and-srcset.js,lib/mimic-background-image.js\" --output \"picture-perfect-all-in-one.js\"",
     "concat-all-but-dynamic-soruces": "node concat --files \"lib/picture-perfect.js,lib/lazy-load.js,lib/calculate-size.js,lib/mimic-background-image.js\" --output \"picture-perfect-all-except-dynamic-source.js\"",
-    "dist": "npm run concat-all-but-dynamic-soruces && npm run concat-lazy-load && npm run concat-calculate-size && npm run concat-dynamic-source && npm run concat-mimic-background && npm run concat-all && webpack"
+    "dist": "npm run concat-all-but-dynamic-soruces && npm run concat-lazy-load && npm run concat-calculate-size && npm run concat-dynamic-source && npm run concat-mimic-background && npm run concat-all && npm run minify",
+    "minify" : "node minify"
   },
   "repository": {
     "type": "git",

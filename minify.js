@@ -5,7 +5,7 @@ const argv  =   require('minimist')(process.argv.slice(2));
 
 const path    = argv.path || "./dist";
 let files = fs.readdirSync(join(__dirname,path))
-              .filter(name => /\.js$/.test(name));
+              .filter(name => /\.js$/.test(name) && !/\.min\.js$/.test(name));
 
 (async()=>{
 
