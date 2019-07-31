@@ -6,6 +6,24 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 [Live demo](https://jsfiddle.net/7hxt3q8b/1/)
 
 
+## Features
+- ✔ Lazy loading `src`.
+- ✔ Lazy loading `srcset`.
+- ✔ Lazy loading `background-image`.
+- ✔ Configurable threshold / viewport offset.
+- ✔ Automatic calculation of image sizes.
+- ✔ Dynamic source endpoint calculation of `src`.
+- ✔ Dynamic source endpoint calculation of `srcset`.
+- ✔ Dynamic source endpoint calculation of `background-image`.
+- ✔ Dynamic sources for multiple pixel densities.
+- ✔ Dynamic sources automatically detects pixel density.
+- ✔ URL string interpolation, gives you control to work on a performance budget.
+- ✔ Support for `<picture>` elements allows you to achieve:
+- - ✔ Art direction, using `media` attributes.
+- - ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.
+- ✔ Replace background images with `<img>` tags and benefit from all of the above.
+
+
 ## Quick start
 Picture Perfect provides a set of tools not just a single optimization, I strongly recommend you read the rest of this document, see what it has to offer and decide what you want to implement and what you wanna left aside.
 
@@ -39,18 +57,6 @@ document.querySelectorAll('img').forEach(function(node){
   new PicturePerfect(node);
 });
 ```
-
-## Features
-- ✔ Lazy loading.
-- ✔ Configurable threshold / viewport offset.
-- ✔ Automatic hand picked sizes.
-- ✔ Automatic srcset.
-- ✔ Automatic srcset with multiple pixel densities.
-- ✔ Specify multiple formats.
-- ✔ Specify custom media rules.
-- ✔ URL string interpolation, gives you control to work on a performance budget.
-- ✔ Extends your base sizes and srcset configuration.
-- ✔ Art direction, use the native picture features.
 
 ## Getting started
 
