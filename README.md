@@ -20,7 +20,8 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 ✔ URL string interpolation, gives you control to work on a performance budget.  
 ✔ Support for `<picture>` elements allows you to achieve:  
 - ✔ Art direction, using `media` attributes.
-- ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.
+- ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.  
+
 ✔ Replace background images with `<img>` tags and benefit from all of the above.  
 
 
