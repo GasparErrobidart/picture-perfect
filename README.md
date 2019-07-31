@@ -1,4 +1,4 @@
-# Picture Perfect
+# Looking for tools to drastically reduce your page load times, optimizing image serving methods? Try Picture Perfect!
 A tiny code snippet that enhances the picture HTML element.
 Reduce your pages initial load times around 90%, without compromising your users experience.
 Let Picture Perfect calculate the srcset and sizes of your images.
@@ -56,6 +56,13 @@ document.querySelectorAll('img').forEach(function(node){
   new PicturePerfect(node);
 });
 ```
+
+# Modules
+
+## Lazy load
+## Calculate sizes
+## Dynamic endpoint sources
+## Mimic background images
 
 ## Getting started
 
