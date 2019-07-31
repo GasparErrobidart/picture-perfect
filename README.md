@@ -1,4 +1,4 @@
-# Picture Perfect!
+# Picture Perfect
 ### Drastically reduce page load times + optimize image delivery
 A tiny code snippet that enhances the picture HTML element.
 Reduce your pages initial load times around 90%, without compromising your users experience.
