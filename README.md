@@ -7,21 +7,21 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 
 
 ## Features
-✔ Lazy loading `src`.
-✔ Lazy loading `srcset`.
-✔ Lazy loading `background-image`.
-✔ Configurable threshold / viewport offset.
-✔ Automatic calculation of image sizes.
-✔ Dynamic source endpoint calculation of `src`.
-✔ Dynamic source endpoint calculation of `srcset`.
-✔ Dynamic source endpoint calculation of `background-image`.
-✔ Dynamic sources for multiple pixel densities.
-✔ Dynamic sources automatically detects pixel density.
-✔ URL string interpolation, gives you control to work on a performance budget.
-✔ Support for `<picture>` elements allows you to achieve:
-- ✔ Art direction, using `media` attributes.
-- ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.
-✔ Replace background images with `<img>` tags and benefit from all of the above.
+✔ Lazy loading `src`.  
+✔ Lazy loading `srcset`.  
+✔ Lazy loading `background-image`.  
+✔ Configurable threshold / viewport offset.  
+✔ Automatic calculation of image sizes.  
+✔ Dynamic source endpoint calculation of `src`.  
+✔ Dynamic source endpoint calculation of `srcset`.  
+✔ Dynamic source endpoint calculation of `background-image`.  
+✔ Dynamic sources for multiple pixel densities.  
+✔ Dynamic sources automatically detects pixel density.  
+✔ URL string interpolation, gives you control to work on a performance budget.  
+✔ Support for `<picture>` elements allows you to achieve:  
+- ✔ Art direction, using `media` attributes.  
+- ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.  
+✔ Replace background images with `<img>` tags and benefit from all of the above.  
 
 
 ## Quick start
