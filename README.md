@@ -16,7 +16,29 @@ The quickest and easiest optimization you can achieve is lazy loading images, an
 ```HTML
 <script src="./dist/lazy-and-sizes-only.min.js"></script>
 ```
+3. Implement `lazy-src` , `lazy-srcset` or both as you need, on your images.
+```HTML
+<!-- YOU SHOULD PROVIDE A TINY VERSION OF THE IMAGE IN "src" OR A GENERIC TINY PLACEHOLDER AND THE BIGGER VERSION IN `lazy-src` -->
+<img
+  class="responsive-img"
+  lazy-src="https://placehold.it/1920x1920.jpg"
+  src="https://placehold.it/80x80.jpg"
+  alt="Lazy image src">
 
+<!-- SAME METHOD APPLIES IF YOU'RE USING "srcset" -->
+<img
+  class="responsive-img"
+  lazy-srcset="https://placehold.it/1920x1920.jpg 1920w,https://placehold.it/640x640.jpg 640w"
+  src="https://placehold.it/80x80.jpg"
+  sizes="100vw"
+  alt="Lazy image srcset">
+```
+4. Only thing left is you add some JS code to initialize `PicturePerfect`, there is a few methods you could use to initialize it here is a conservative way you can use:
+```javascript
+document.querySelectorAll('img').forEach(function(node){
+  new PicturePerfect(node);
+});
+```
 
 ## Features
 - ✔ Lazy loading.
