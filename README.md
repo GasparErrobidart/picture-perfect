@@ -62,8 +62,8 @@ document.querySelectorAll('img').forEach(function(node){
 
 ## Lazy load
 ## Calculate sizes
-## Dynamic endpoint sources
-## Mimic background images
+## Dynamic sources endpoint
+## Mimic background images using <img> tags
 
 ## Getting started
 
