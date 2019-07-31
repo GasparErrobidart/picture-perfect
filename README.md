@@ -1,5 +1,5 @@
-### Looking for tools to drastically reduce your page load times, optimizing image serving methods?
-# Try Picture Perfect!
+# Picture Perfect!
+### Drastically reduce page load times + optimize image delivery
 A tiny code snippet that enhances the picture HTML element.
 Reduce your pages initial load times around 90%, without compromising your users experience.
 Let Picture Perfect calculate the srcset and sizes of your images.
