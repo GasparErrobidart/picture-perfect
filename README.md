@@ -5,6 +5,19 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 
 [Live demo](https://jsfiddle.net/7hxt3q8b/1/)
 
+
+## Quick start
+Picture Perfect provides a set of tools not just a single optimization, I strongly recommend you read the rest of this document, see what it has to offer and decide what you want to implement and what you wanna left aside.
+
+The quickest and easiest optimization you can achieve is lazy loading images, and calculate the "sizes" attribute, here is how:
+
+1. Download the files containing only the features you need. For this case I'll use `lazy-and-sizes-only.min.js`
+2. Link the script or add the code inline (see more about initialization below)
+```HTML
+<script src="./dist/lazy-and-sizes-only.min.js"></script>
+```
+
+
 ## Features
 - ✔ Lazy loading.
 - ✔ Configurable threshold / viewport offset.
