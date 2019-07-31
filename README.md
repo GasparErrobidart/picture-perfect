@@ -18,12 +18,10 @@ Let Picture Perfect calculate the srcset and sizes of your images.
 ✔ Dynamic sources for multiple pixel densities.  
 ✔ Dynamic sources automatically detects pixel density.  
 ✔ URL string interpolation, gives you control to work on a performance budget.  
-✔ Support for `<picture>` elements allows you to achieve:
-- ✔ Art direction, using `media` attributes.
-- ✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.
-
-✔ Replace background images with `<img>` tags and benefit from all of the above.  
-
+✔ Support for `<picture>` elements allows you to achieve:  
+✔ Art direction, using `media` attributes.  
+✔ Multiple image formats `JPEG`, `WEBP`, `PNG`.  
+✔ Mimic background images with `<img>` tags and benefit from all of the above.  
 
 ## Quick start
 Picture Perfect provides a set of tools not just a single optimization, I strongly recommend you read the rest of this document, see what it has to offer and decide what you want to implement and what you wanna left aside.
