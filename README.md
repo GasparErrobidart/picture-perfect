@@ -63,13 +63,75 @@ document.querySelectorAll('img').forEach(function(node){
 ## Lazy load
 This module will allow you to delay the load of the full size image until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
 
+
 ### Pros
 For example if you have a **2400x1200 image, that's a 2.8 megapixels** image. You could delay that by providing a let's say 120x60 tiny placeholder of just **0.0072 megapixels**. When the user gets close to that element the full size image will kick in and your users won't see the difference for most cases.
 
 If you want to go a little further, you could create a default placeholder for your images, let's say a 40x40 "image-placeholder.jpeg" and use that for every single image you use lazy load. The user will download that one image just one time and use that from the browser's cache. A single request a super tiny tiny image if your architecture and the user connection are good you won't see the trick happening at all.
 
+
 ### Cons
 As stated on the "Pros" section right above, the only drawback of this technique is that your users will see a low resolution / placeholder image if the full size image takes a long time to download, that **could be the result of serving huge images, having a not so fast architecture or just the user having a slow connection**. But **let's be honest** if any of those scenarios are taking place chances are that the user will have a worst experience by waiting from the star for all the images to be downloaded, adding up to the initial page load and degrading speed.
+
+
+### Options
+Options are provided through HTML attributes.
+
+#### lazy-threshold
+
+Type : `string | number | expression`  
+Default : `window.innerHeight/2`  
+
+Examples:
+```HTML
+<!-- FIXED VALUE 300 PIXELS IN THIS CASE -->
+<img lazy-threshold="300" lazy-src="full-size-cool-image.jpg" src="placeholder.jpg" alt="">
+<!-- AN EVALUATED EXPRESSION -->
+<img lazy-threshold="window.innerHeight/2 - 100" lazy-src="full-size-cool-image.jpg" src="placeholder.jpg" >
+```
+
+Here you can provide a value of tolerance or offset in which the element lazy attributes will be activated. Setting it to `0` will result in the element being activated when the first pixel gets into the viewport. Setting it to `window.innerHeight` will activate the element when its first pixel distance to the viewport is equal to the viewport height.
+
+#### lazy-src
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<img lazy-src="full-size-cool-image.jpg" src="placeholder.jpg" alt="">
+```
+
+When the element gets activated the value of this attribute will replace the value for `src`.
+
+#### lazy-srcset
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<img
+  lazy-srcset="full-size-cool-image-1920px.jpg 1920w,full-size-cool-image-1200px.jpg 1200w" src="placeholder.jpg"
+  alt="">
+```
+
+When the element gets activated the value of this attribute will replace the value for `srcset`.
+
+#### lazy-background-image
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<div
+class="element-with-background"
+style="background-image:url('placeholder.jpg')"
+lazy-background-image="full-size-cool-image.jpg"></div>
+```
+
+When the element gets activated the value of this attribute will replace the value for CSS `background-image`.
 
 
 ## Calculate sizes
