@@ -178,7 +178,7 @@ Supports : `contain`, `cover`
 
 Type : `string`  
 Default : `center center`  
-Supports : `left`, `center`, `right`, `top`, `bottom`, `number`, `percent`  
+Supports : `left`, `center`, `right`, `top`, `bottom`, `percent`  
 
 
 
