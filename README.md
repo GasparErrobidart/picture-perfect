@@ -57,7 +57,8 @@ document.querySelectorAll('img').forEach(function(node){
 
 # Modules
 
-All modules and features are compatible in between them. Source files and minified bundles are provided in this project, you can create your own bundle with just the features you need.
+- All modules and features are compatible in between them. Source files and minified bundles are provided in this project, you can create your own bundle with just the features you need.
+- All features are compatible with `<picture>` tags. It's highly recommended that you use `<picture>` tags to deliver next generation image formats like `WEBP` and "[art direct](https://simpl.info/pictureart/)" your images. 
 
 ## Lazy load
 This module will allow you to delay the load of full size images until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
