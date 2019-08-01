@@ -140,6 +140,34 @@ lazy-background-image="full-size-cool-image.jpg"></div>
 
 
 ## Calculate sizes
+If you import this module, all initialized elements will automatically calculate the `sizes` attribute based on the current element width.  
+You don't need to add any additional markup to make use of this feature, just include the module's code.
+
+I recommend you set `sizes` to `1vw` by default to prevent the browser from requesting bigger image sizes:
+
+```HTML
+<!-- MARKUP BEFORE ELEMENT INITIALIZATION -->
+<picture>
+  <source
+  lazy-srcset="full-size-cool-image-1920px.jpg 1920w, full-size-cool-image-1200px.jpg 1200w"   type="imgae/jpeg">  
+  <img  
+    class="responsive-img"  
+    src="https://placehold.it/200x100.jpg?text=Calculate+Sizes+200x100+JPEG"  
+    sizes="1vw">  
+</picture>
+
+<!-- MARKUP AFTER ELEMENT INITIALIZATION  IF THE IMAGE IS 400px WIDE ON A VIEWPORT 1300px WIDE-->
+<picture>
+  <source
+  lazy-srcset="full-size-cool-image-1920px.jpg 1920w, full-size-cool-image-1200px.jpg 1200w"   type="imgae/jpeg">  
+  <img  
+    class="responsive-img"  
+    src="https://placehold.it/200x100.jpg?text=Calculate+Sizes+200x100+JPEG"  
+    sizes="31vw">  
+</picture>
+```
+
+
 ## Dynamic sources endpoint
 ## Mimic background images using "img" tags
 
