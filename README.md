@@ -56,11 +56,14 @@ document.querySelectorAll('img').forEach(function(node){
 ```
 
 # Modules
-
+- All modules require the base picture perfect module to be included first. You can find its source code in `/lib/picture-perfect.js`. Bundle files already include the base module.
 - All modules and features are compatible in between them. Source files and minified bundles are provided in this project, you can create your own bundle with just the features you need.
-- All features are compatible with `<picture>` tags. It's highly recommended that you use `<picture>` tags to deliver next generation image formats like `WEBP` and "[art direct](https://simpl.info/pictureart/)" your images. 
+- All features are compatible with `<picture>` tags. It's highly recommended that you use `<picture>` tags to deliver next generation image formats like `WEBP` and "[art direct](https://simpl.info/pictureart/)" your images.
 
 ## Lazy load
+
+Source file: `/lib/lazy-load.js`
+
 This module will allow you to delay the load of full size images until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
 
 ### Notes
@@ -142,6 +145,9 @@ lazy-background-image="full-size-cool-image.jpg"></div>
 
 
 ## Calculate sizes
+
+Source file: `/lib/calculate-sizes.js`
+
 If you import this module, all initialized elements will automatically calculate the `sizes` attribute based on the current element width.  
 You don't need to add any additional markup to make use of this feature, just include the module's code.
 
@@ -172,8 +178,137 @@ I recommend you set `sizes` to `1vw` by default to prevent the browser from requ
 
 ## Dynamic sources endpoint
 
+Source file: `/lib/dynamic-src-and-srcset.js`
+
+Similar to how `sizes` are automatically calculated, this module will interpolate a dynamic url to generate `dynamic-src`, `dynamic-srcset` and `dynamic-background-image`. It takes into consideration multiple pixel densities.
+
+**NOTES**  
+- If you're using `lazy` attributes that collide with the attributes from this module, this module has higher priority and will override what lazy load set as a value.
+- You **MUST** specify the right `type` attribute for every DOM element (`div`,`img`,`source`,etc) that uses a dynamic url to make use of the `${mime}` variable value.
+
+### Options
+Options are provided through HTML attributes.
+
+#### dynamic-src
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<img
+  dynamic-src="https://placehold.it/${width}x${height}.${mime}"
+  src="https://placehold.it/200x100.jpg"
+  type="image/jpeg"
+  alt="Generate src dynamically">
+```
+
+#### dynamic-src-density
+
+Type : `float`  
+Default : `window.devicePixelRatio`
+
+Pixel ratio is added to the mix to calculate the correct width and height.
+
+Examples:
+```HTML
+<img
+  dynamic-src-density="1.8"
+  dynamic-src="https://placehold.it/${width}x${height}.${mime}"
+  src="https://placehold.it/200x100.jpg"
+  type="image/jpeg"
+  alt="Generate src dynamically">
+```
+
+#### dynamic-srcset
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<img
+  dynamic-srcset="https://placehold.it/${width}x${height}.${mime}"
+  src="https://placehold.it/200x100.jpg"
+  type="image/jpeg"
+  alt="Generate srcset dynamically">
+```
+
+#### dynamic-srcset-densities
+
+Type : comma separated `float[]`  
+Default : `window.devicePixelRatio`
+
+Pixel ratio is added to the mix to calculate the correct width and height.
+
+Examples:
+```HTML
+<img
+  dynamic-srcset-densities="0.5,1.0,1.8,2.0,3.0"
+  dynamic-srcset="https://placehold.it/${width}x${height}.${mime}"
+  src="https://placehold.it/200x100.jpg"
+  type="image/jpeg"
+  alt="Generate srcset dynamically">
+```
+
+#### dynamic-background-image
+
+Type : `string`  
+Default : `null`  
+
+Examples:
+```HTML
+<div
+class="element-with-background"  
+style="background-image:url('https://placehold.it/200x100.jpg')"  
+dynamic-background-image="https://placehold.it/${width}x${height}.${mime}"></div>
+```
+
+#### dynamic-background-image-density
+
+Type : `float`  
+Default : `window.devicePixelRatio`
+
+Pixel ratio is added to the mix to calculate the correct width and height.
+
+Examples:
+```HTML
+<div  
+dynamic-background-image-density="3.0"  
+class="element-with-background"   
+style="background-image:url('https://placehold.it/200x100.jpg')"  
+dynamic-background-image="https://placehold.it/${width}x${height}.${mime}"></div>
+```
+
+### Picture tags using dynamic url
+This is a special case you have `<img>`, `<source>` and `<picture>` tags all working as one. You can provide basic configuration on the `<picture>` tag all attributes defined here will be inherited by the child `<img>` and `<source>` elements. For example you can define `dynamic-srcset` on the `<picture>` tag and all the childs will imitate that value or you could override that inherited value on specific tags.
+
+```HTML
+<picture
+  dynamic-srcset-densities="0.5,1.0,2.0,3.0,4.0"
+  dynamic-srcset="https://placehold.it/${width}x400.${mime}?text=Dynamic+Source+${width}x400+${mime}">
+  <!-- WEBP VERSIONS FIRST -->
+  <source media="(min-width: 968px)" type="image/webp">
+  <source
+    dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+    type="image/webp">
+  <!-- JPEG VERSIONS LAST -->
+  <source media="(min-width: 968px)" type="image/jpeg">
+  <source
+    dynamic-srcset="https://placehold.it/${width}x${width}.${mime}?text=Dynamic+Source+${width}x${width}+${mime}"
+    type="image/jpeg">
+  <img
+    class="responsive-img"
+    onload="JIT_IMG(this)"
+    src="https://placehold.it/200x100.jpg?text=Lazy+Load+200x100+JPEG"
+    alt="Generate src dynamically"
+    type="image/jpeg" > <!-- 'type' attribute must be specified always when using dynamic-src, dynamic-srcset or dynamic-background-image -->
+</picture>
+```
 
 ## Mimic background images using "img" tags
+
+Source file: `/lib/mimic-background-image.js`
 
 This is a mix solution using the CSS provided here at `/css/mimic-background-image.css` for basic styles and javascript code will calculate if the element should match its container height or width, this is for imitating `background-size`. It'll also calculare `left` / `top` attributes to mimic `background-position`.
 
