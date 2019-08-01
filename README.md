@@ -2,7 +2,7 @@
 ### Drastically reduce page load times up to 90% + optimize image delivery
 Boost your front end performance by optimizing how your images get delivered for no cost! Picture Perfect is a small library including a set of tools that can help improve your site's performance.
 
-[Old version 1 Live demo](https://jsfiddle.net/7hxt3q8b/1/)
+[LIVE DEMO](https://jsfiddle.net/jmtz39rn/2/)
 
 ## Features
 ✔ Lazy loading `src`.  
