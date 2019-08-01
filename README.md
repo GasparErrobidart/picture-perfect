@@ -29,12 +29,12 @@ Picture Perfect provides a set of tools not just a single optimization, I strong
 
 The quickest and easiest optimization you can achieve is lazy loading images, and calculate the "sizes" attribute, here is how:
 
-1. Download the files containing only the features you need. For this case I'll use `lazy-and-sizes-only.min.js`
-2. Link the script or add the code inline (see more about initialization below)
+1. **Select the features you want and download the code**, I recommend you get the file containing only the features you need. For this case I'll use `lazy-and-sizes-only.min.js`
+2. **Link the script** or add the code inline (see more about initialization below)
 ```HTML
 <script src="./dist/lazy-and-sizes-only.min.js"></script>
 ```
-3. Implement `lazy-src` , `lazy-srcset` or both as you need, on your images.
+3. **Implement** `lazy-src` , `lazy-srcset` or both as you need, on your images.
 ```HTML
 <!-- YOU SHOULD PROVIDE A TINY VERSION OF THE IMAGE IN "src" OR A GENERIC TINY PLACEHOLDER AND THE BIGGER VERSION IN `lazy-src` -->
 <img
@@ -51,7 +51,7 @@ The quickest and easiest optimization you can achieve is lazy loading images, an
   sizes="100vw"
   alt="Lazy image srcset">
 ```
-4. Only thing left is you add some JS code to initialize `PicturePerfect`, there is a few methods you could use to initialize it here is a conservative way you can use:
+4. Only thing left is you add some JS code to **initialize** `PicturePerfect`, there is a few methods you could use to initialize it here is a conservative way you can use:
 ```javascript
 document.querySelectorAll('img').forEach(function(node){
   new PicturePerfect(node);
@@ -60,8 +60,10 @@ document.querySelectorAll('img').forEach(function(node){
 
 # Modules
 
+All modules and features are compatible in between them. Source files and minified bundles are provided in this project, you can create your own bundle with just the features you need.
+
 ## Lazy load
-This module will allow you to delay the load of the full size image until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
+This module will allow you to delay the load of full size images until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
 
 
 ### Pros
@@ -71,7 +73,7 @@ If you want to go a little further, you could create a default placeholder for y
 
 
 ### Cons
-As stated on the "Pros" section right above, the only drawback of this technique is that your users will see a low resolution / placeholder image if the full size image takes a long time to download, that **could be the result of serving huge images, having a not so fast architecture or just the user having a slow connection**. But **let's be honest** if any of those scenarios are taking place chances are that the user will have a worst experience by waiting from the star for all the images to be downloaded, adding up to the initial page load and degrading speed.
+As stated on the "Pros" section right above, the only drawback of this technique is that your users will see a low resolution/placeholder image if the full size image takes a long time to download, that **could be the result of serving huge images, having a not so fast architecture or just the user having a slow connection**. But **let's be honest** if any of those scenarios are taking place chances are that the user will have a worst experience by waiting from the star for all the images to be downloaded, adding up to the initial page load and degrading speed.
 
 
 ### Options
@@ -82,6 +84,9 @@ Options are provided through HTML attributes.
 Type : `string | number | expression`  
 Default : `window.innerHeight/2`  
 
+Here you can provide a value of tolerance or offset in which the element lazy attributes will be activated. Setting it to `0` will result in the element being activated when the first pixel gets into the viewport. Setting it to `window.innerHeight` will activate the element when its first pixel distance to the viewport is equal to the viewport height.
+
+
 Examples:
 ```HTML
 <!-- FIXED VALUE 300 PIXELS IN THIS CASE -->
@@ -90,38 +95,39 @@ Examples:
 <img lazy-threshold="window.innerHeight/2 - 100" lazy-src="full-size-cool-image.jpg" src="placeholder.jpg" >
 ```
 
-Here you can provide a value of tolerance or offset in which the element lazy attributes will be activated. Setting it to `0` will result in the element being activated when the first pixel gets into the viewport. Setting it to `window.innerHeight` will activate the element when its first pixel distance to the viewport is equal to the viewport height.
 
 #### lazy-src
 
 Type : `string`  
 Default : `null`  
 
+When the element gets activated the value of this attribute will replace the value for `src`.
+
 Examples:
 ```HTML
 <img lazy-src="full-size-cool-image.jpg" src="placeholder.jpg" alt="">
 ```
-
-When the element gets activated the value of this attribute will replace the value for `src`.
 
 #### lazy-srcset
 
 Type : `string`  
 Default : `null`  
 
+When the element gets activated the value of this attribute will replace the value for `srcset`.
+
 Examples:
 ```HTML
-<img
-  lazy-srcset="full-size-cool-image-1920px.jpg 1920w,full-size-cool-image-1200px.jpg 1200w" src="placeholder.jpg"
+<img  
+  lazy-srcset="full-size-cool-image-1920px.jpg 1920w, full-size-cool-image-1200px.jpg 1200w"   src="placeholder.jpg"  
   alt="">
 ```
-
-When the element gets activated the value of this attribute will replace the value for `srcset`.
 
 #### lazy-background-image
 
 Type : `string`  
 Default : `null`  
+
+When the element gets activated the value of this attribute will replace the value for CSS `background-image`.
 
 Examples:
 ```HTML
@@ -131,12 +137,59 @@ style="background-image:url('placeholder.jpg')"
 lazy-background-image="full-size-cool-image.jpg"></div>
 ```
 
-When the element gets activated the value of this attribute will replace the value for CSS `background-image`.
 
 
 ## Calculate sizes
 ## Dynamic sources endpoint
 ## Mimic background images using <img> tags
+
+This is a mix solution using the CSS provided here at `/css/mimic-background-image.css` for basic styles and javascript code will calculate if the element should match its container height or width, this is for imitating `background-size`. It'll also calculare `left` / `top` attributes to mimic `background-position`.
+
+You'll need 3 elements:
+- The `<img>` (which could be part of a `<picture>`).
+- A wrapper for the image tag `mimic-background-image-wrapper`, this element will assist resizing and repositioning the image and will aplly the CSS `background-size` and `background-position` attributes.
+- Finally a container that will rule the sizing and positiong of the wrapper+image `mimic-background-image-container`.
+
+Examples:
+
+```HTML
+<div mimic-background-image-container>
+  <h4  style="padding:105px 40px 200px 40px;width:100%;">THIS COULD BE A HEADLINE</h4>
+  <div mimic-background-image-wrapper class="cover" style="background-position:center center">
+    <img
+      class="responsive-img"
+      src="placeholder.jpg"
+      lazy-src="full-size-cool-image.jpg"
+      alt="Hi, I look like a background.">
+  </div>
+</div>
+```
+
+### Supported Options
+Options are provided through CSS rules that applie to the wrapper element.
+
+#### background-size
+
+Type : `string`  
+Default : `cover`
+Supports : `contain, cover`
+
+#### background-position
+
+Type : `string`  
+Default : `center center`
+Supports : `left, center, right, top, bottom, number, percent` 
+
+
+
+
+
+
+
+
+
+
+
 
 ## Getting started
 
