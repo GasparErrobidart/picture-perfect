@@ -141,13 +141,13 @@ lazy-background-image="full-size-cool-image.jpg"></div>
 
 ## Calculate sizes
 ## Dynamic sources endpoint
-## Mimic background images using <img> tags
+## Mimic background images using "img" tags
 
 This is a mix solution using the CSS provided here at `/css/mimic-background-image.css` for basic styles and javascript code will calculate if the element should match its container height or width, this is for imitating `background-size`. It'll also calculare `left` / `top` attributes to mimic `background-position`.
 
 You'll need 3 elements:
 - The `<img>` (which could be part of a `<picture>`).
-- A wrapper for the image tag `mimic-background-image-wrapper`, this element will assist resizing and repositioning the image and will aplly the CSS `background-size` and `background-position` attributes.
+- A wrapper for the image tag `mimic-background-image-wrapper`, this element will assist resizing and repositioning the image and will apply the CSS `background-size` and `background-position` attributes.
 - Finally a container that will rule the sizing and positiong of the wrapper+image `mimic-background-image-container`.
 
 Examples:
@@ -171,14 +171,14 @@ Options are provided through CSS rules that applie to the wrapper element.
 #### background-size
 
 Type : `string`  
-Default : `cover`
-Supports : `contain, cover`
+Default : `cover`  
+Supports : `contain`, `cover`
 
 #### background-position
 
 Type : `string`  
-Default : `center center`
-Supports : `left, center, right, top, bottom, number, percent` 
+Default : `center center`  
+Supports : `left`, `center`, `right`, `top`, `bottom`, `number`, `percent`  
 
 
 
