@@ -1,11 +1,8 @@
 # Picture Perfect
 ### Drastically reduce page load times up to 90% + optimize image delivery
-A tiny code snippet that enhances the picture HTML element.
-Reduce your pages initial load times around 90%, without compromising your users experience.
-Let Picture Perfect calculate the srcset and sizes of your images.
+Boost your front end performance by optimizing how your images get delivered for no cost! Picture Perfect is a small library including a set of tools that can help improve your site's performance.
 
-[Live demo](https://jsfiddle.net/7hxt3q8b/1/)
-
+[Old version 1 Live demo](https://jsfiddle.net/7hxt3q8b/1/)
 
 ## Features
 ✔ Lazy loading `src`.  
@@ -64,6 +61,10 @@ All modules and features are compatible in between them. Source files and minifi
 
 ## Lazy load
 This module will allow you to delay the load of full size images until the UI element is in or close to the viewport. You can reduce the initial page size and boost the page speed by providing only a tiny version of the real image.  
+
+### Notes
+- All other features benefit from this module, if you are lazy loading elements, any other Picture Perfect module initialization will be delayed until lazy load marks the element as "ready" preventing the use of unnecessary code processing.
+- Initialized elements are marked with the `picture-perfect-ready` class name. You can use this for visual transitions.
 
 
 ### Pros
@@ -169,6 +170,8 @@ I recommend you set `sizes` to `1vw` by default to prevent the browser from requ
 
 
 ## Dynamic sources endpoint
+
+
 ## Mimic background images using "img" tags
 
 This is a mix solution using the CSS provided here at `/css/mimic-background-image.css` for basic styles and javascript code will calculate if the element should match its container height or width, this is for imitating `background-size`. It'll also calculare `left` / `top` attributes to mimic `background-position`.
@@ -209,75 +212,6 @@ Default : `center center`
 Supports : `left`, `center`, `right`, `top`, `bottom`, `pixels`, `percentage`  
 
 
-
-
-
-
-
-
-
-
-
-
-## Getting started
-
-Import the snippet into your html file:
-```HTML
-<script src="main.min.js"></script>
-```
-
-Now you can start using the perfect picture:
-```HTML
-<!--
-  Picture Perfect uses <picture> HTML tags to enhance your image delivery.
-  You can provide options as HTML attribute for this tag:
-
-  [data-dynamic-url]
-    ${format} will be replaced dinamically with the current image format
-    ${width} will be replaced dinamically with the current element width
-  [data-densities]
-    Provide a list of pixel density multipliers comma separated.
-    Default : 1
-    e.g.: "1,2,3,4" (this will become 1x, 2x, 3x, 4x the current element width)
-  [data-automatic-sizes]
-    Default: true
-    Set to false to disable
-  [data-automatic-srcset]
-    Default: true
-    Set to false to disable
-  [proximityThreshold]
-    How many pixels before the element gets into the viewport will trigger the lazy loader.
-    Default: window.innerHeight/2
-    e.g.: "300" (pixels)
-    e.g.: "window.innerHeight / 3" (script to eval)
--->
-<picture
-  data-dynamic-url="https://placehold.it/${width}x${width}.${format}?text=${width}x${width}+${format}"
-  data-densities="0.5,1,2,3,4"
-  data-automatic-sizes="true"
-  data-automatic-srcset="true"
-  data-threshold="window.innerHeight / 3"
->
-
-  <!--
-    Here you can provide native source HTML elements, use media attributes and define srcset,size and type.
-    For each source Picture Perfect will automatically calculate srcset and sizes based on your configuration.
-    This allows you to specify multiple file formats and rules to display them.
-    You can also add a "data-srcset" attribute, when the element gets close to the viewport the value of this
-    attribute will be combined with the true srcset preventing larger images to load on the initial page load.
-  -->
-  <source srcset="https://placehold.it/50x50.webp?text=50x50+webp" type="image/webp">
-  <source srcset="https://placehold.it/50x50.jpg?text=50x50+jpeg" type="image/jpeg">
-
-  <!--
-    This next <img> tag is your fallback and hast to be present.
-    Add the "make-picture-perfect" attribute to indicate that you want to track this picture/img pair of tags.
-  -->
-  <img make-picture-perfect alt="fallback" src="https://placehold.it/50x50.jpg">
-
-</picture>
-```
-
 ## Initializing
 
 #### Just in time
@@ -288,7 +222,7 @@ Initializing `PicturePerfect` this way requires you to load the code on the `<he
 <!-- ONE BY ONE AS THE ELEMENTS GET LOADED (RECOMMENDED) -->
 ...
   <picture>
-    <img onload="JIT_PICTURE_PERFECT(this)" src="myimage.jpg" alt="test-image">
+    <img onload="JIT_IMG(this)" src="myimage.jpg" alt="test-image">
   </picture>
 ...
 ```
@@ -298,7 +232,7 @@ Initializing `PicturePerfect` this way requires you to load the code on the `<he
 ```javascript
 // GLOBALLY INITIATED
 window.addEventListener('load',function(){
-  document.querySelectorAll('picture > img').forEach(PicturePerfect);
+  document.querySelectorAll('img, [lazy-background-image], [dynamic-background-image]').forEach(PicturePerfect);
 });
 
 ```
@@ -308,7 +242,7 @@ window.addEventListener('load',function(){
 ```javascript
 // GLOBALLY INITIATED USING JQUERY
 $(document).ready(function(){
-  $('picture > img').each(function(){
+  $('img, [lazy-background-image], [dynamic-background-image]').each(function(){
     new PicturePerfect(this);
   })
 })
@@ -317,4 +251,14 @@ $(document).ready(function(){
 
 ## Support for old browsers
 
-You can use [Picture fill](https://scottjehl.github.io/picturefill/) to support the <picture> tag on older browsers.
+- You can use [Picture fill](https://scottjehl.github.io/picturefill/) to support the <picture> tag on older browsers.
+- Picture Perfect uses the `Element.closest()` method you can include a polyfill for IE9+ that's provided in `/polyfills/closest.js`.
+
+I recommend you include polyfills like this on the `<head>`:
+```HTML
+<!-- SUPPORT FOR IE9+ -->
+<!--[if IE]>
+<script src="https://cdn.rawgit.com/scottjehl/picturefill/3.0.2/dist/picturefill.min.js"></script>
+<script src="polyfills/closest.js"></script>
+<![endif]-->
+```
