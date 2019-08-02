@@ -31,14 +31,16 @@ function PicturePerfect(img,options){
 
   // ON VIEWPORT PROXIMITY
   self.onProximity = function(){
-    self.initialized = true;
-    self.img.className = self.img.className += " picture-perfect-ready";
-    self.img.addEventListener("load",self.onLoad);
-    window.addEventListener("resize",function(){
-      setTimeout(self.onResize,100);
-    });
-    self._calculateSizes();
-    self._updateSources();
+    if(self.initialized){
+      self.img.className = self.img.className += " picture-perfect-ready";
+      self.img.addEventListener("load",self.onLoad);
+      window.addEventListener("resize",function(){
+        setTimeout(self.onResize,100);
+      });
+      self._calculateSizes();
+      self._updateSources();
+      self._mimicBackgroundImage();
+    }
   }
 
 
@@ -59,6 +61,7 @@ function PicturePerfect(img,options){
 
   self.initialized ? self.onProximity() : self.lazyLoad();
   self._mimicBackgroundImage();
+  window.addEventListener("load",function(){ self.onProximity() });
 }
 
 // WRAPPER FOR EXECUTING JUST IN TIME INITIALIZATION
@@ -100,6 +103,7 @@ PicturePerfect.prototype.lazyLoad = function(){
         })
       }
       self.lazyLoadAttributes( img , ['src','srcset','background-image'] );
+      self.initialized = true;
       self.onProximity();
     }
   };
