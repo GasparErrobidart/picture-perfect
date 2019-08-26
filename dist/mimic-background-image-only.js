@@ -4,7 +4,6 @@ function PicturePerfect(img,options){
   options = options || {};
   self.options = options;
   self.img = img;
-  self.img.className = self.img.className += " picture-perfect";
   self.initialized = !(options.lazy != false && self.lazyLoad);
   self.maxWindowSize = window.innerWidth;
 
@@ -28,11 +27,22 @@ function PicturePerfect(img,options){
     }
   }
 
+  self.addClass = function(className){
+    if(self.img.className.indexOf(className) == -1){
+      setTimeout(function(){self.img.className = self.img.className += " " + className},10);
+    }
+  }
+
+  self.removeClass = function(className){
+    var reg = new RegExp(className,'gi');
+    self.img.className = self.img.className.replace(reg,"");
+  }
+
 
   // ON VIEWPORT PROXIMITY
   self.onProximity = function(){
     if(self.initialized){
-      self.img.className = self.img.className += " picture-perfect-ready";
+      self.addClass('picture-perfect-ready');
       self.img.addEventListener("load",self.onLoad);
       window.addEventListener("resize",function(){
         setTimeout(self.onResize,100);
@@ -55,13 +65,21 @@ function PicturePerfect(img,options){
 
 
   self.onLoad = function(ev){
+    self.addClass('picture-perfect-loaded');
     self._mimicBackgroundImage();
   }
 
+  self.onLoadStart = function(ev){
+    self.removeClass('picture-perfect-loaded');
+  }
 
+  self.img.addEventListener("loadstart",self.onLoadStart);
+  self.addClass('picture-perfect');
   self.initialized ? self.onProximity() : self.lazyLoad();
   self._mimicBackgroundImage();
-  window.addEventListener("load",function(){ self.onProximity() });
+  window.addEventListener("load",function(){
+    self.onProximity();
+  });
 }
 
 // WRAPPER FOR EXECUTING JUST IN TIME INITIALIZATION
