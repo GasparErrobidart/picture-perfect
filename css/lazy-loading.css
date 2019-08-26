@@ -1,0 +1,8 @@
+.picture-perfect{
+  opacity: 0.5;
+  transition: all 200ms linear;
+}
+
+.picture-perfect.picture-perfect-loaded{
+  opacity: 1.0;
+}
