@@ -112,7 +112,10 @@ PicturePerfect.prototype.lazyLoad = function(){
   // LAZY LOAD / ON SCROLL
   onScroll = function(){
     rect = img.getBoundingClientRect();
-    if(rect.top - window.innerHeight < proximityThreshold){
+    if(
+      (rect.bottom > 0 && rect.top - window.innerHeight < proximityThreshold) ||
+      (rect.top < 0 && rect.bottom - window.innerHeight > -1 * proximityThreshold)
+    ){
       window.removeEventListener("scroll",onScroll);
       var parent    = img.parentElement;
       if( parent && /picture/gi.test(parent.tagName) ){
