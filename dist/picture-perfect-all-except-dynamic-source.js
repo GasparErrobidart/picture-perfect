@@ -205,8 +205,6 @@ PicturePerfect.prototype.mimicBackgroundImage = function(img){
     var bgHorizontal        = bgPosition[0];
     var bgVertical          = bgPosition[1];
 
-    console.log("Bg position",bgHorizontal,bgVertical);
-
     if( bgHorizontal.indexOf('px') > -1 ){
       img.style.left = bgHorizontal;
     }else if( bgHorizontal.indexOf('%') > -1 ){
