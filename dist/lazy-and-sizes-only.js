@@ -82,7 +82,7 @@ function PicturePerfect(img,options){
   self.initialized ? self.onProximity() : self.lazyLoad();
   self._mimicBackgroundImage();
   window.addEventListener("load",function(){
-    self.onProximity();
+    self.initialized ? self.onProximity() : self.lazyLoad();
   });
 }
 
@@ -116,10 +116,12 @@ PicturePerfect.prototype.lazyLoad = function(){
   // LAZY LOAD / ON SCROLL
   onScroll = function(){
     rect = img.getBoundingClientRect();
+    
     if(
-      (rect.bottom > 0 && rect.top - window.innerHeight < proximityThreshold) ||
-      (rect.top < 0 && rect.bottom - window.innerHeight > -1 * proximityThreshold)
+      rect.top - window.innerHeight - proximityThreshold <= 0 &&
+      rect.top + rect.height + proximityThreshold >= 0
     ){
+
       window.removeEventListener("scroll",onScroll);
       var parent    = img.parentElement;
       if( parent && /picture/gi.test(parent.tagName) ){
