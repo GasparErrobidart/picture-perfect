@@ -1,6 +1,6 @@
 {
   "name": "picture-perfect",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Boost your front end performance by optimizing how your images get delivered for no cost! Picture Perfect is small library including a set of tools that can help improve your site's performance.",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "concat-all": "node concat --files \"lib/picture-perfect.js,lib/lazy-load.js,lib/calculate-size.js,lib/dynamic-src-and-srcset.js,lib/mimic-background-image.js\" --output \"picture-perfect-all-in-one.js\"",
     "concat-all-but-dynamic-soruces": "node concat --files \"lib/picture-perfect.js,lib/lazy-load.js,lib/calculate-size.js,lib/mimic-background-image.js\" --output \"picture-perfect-all-except-dynamic-source.js\"",
     "concat-lazy-and-sizes": "node concat --files \"lib/picture-perfect.js,lib/lazy-load.js,lib/calculate-size.js\" --output \"lazy-and-sizes-only.js\"",
-    "dist": "npm run concat-lazy-and-sizes && npm run concat-all-but-dynamic-soruces && npm run concat-lazy-load && npm run concat-calculate-size && npm run concat-dynamic-source && npm run concat-mimic-background && npm run concat-all && npm run minify",
+    "concat-polyfills": "node concat --files \"polyfills/closest.js,polyfills/for-each.js\" --output \"polyfills.js\"",
+    "dist": "npm run concat-lazy-and-sizes && npm run concat-all-but-dynamic-soruces && npm run concat-lazy-load && npm run concat-calculate-size && npm run concat-dynamic-source && npm run concat-mimic-background && npm run concat-all && npm run concat-polyfills && npm run minify",
     "minify": "node minify"
   },
   "repository": {

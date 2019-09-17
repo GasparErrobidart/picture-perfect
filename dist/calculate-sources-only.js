@@ -6,6 +6,8 @@ function PicturePerfect(img,options){
   self.img = img;
   self.initialized = !(options.lazy != false && self.lazyLoad);
   self.maxWindowSize = window.innerWidth;
+  self.picturefill = function(){};
+  if(typeof picturefill != 'undefined') self.picturefill = picturefill;
 
   self._calculateSizes = function(){
     if(options.calculateSize != false && self.setElementSize){
@@ -49,6 +51,7 @@ function PicturePerfect(img,options){
       });
       self._calculateSizes();
       self._updateSources();
+      self.picturefill({reevaluate : true});
       self._mimicBackgroundImage();
     }
   }
@@ -60,6 +63,7 @@ function PicturePerfect(img,options){
       self._updateSources();
     }
     self._calculateSizes();
+    self.picturefill({reevaluate : true});
     self._mimicBackgroundImage();
   }
 
