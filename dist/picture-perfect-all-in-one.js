@@ -82,8 +82,12 @@ function PicturePerfect(img,options){
   self.initialized ? self.onProximity() : self.lazyLoad();
   self._mimicBackgroundImage();
   window.addEventListener("load",function(){
-    self.initialized ? self.onProximity() : self.lazyLoad();
-  });
+      self.initialized ? self.onProximity() : self.lazyLoad();
+    },
+    {
+      once : true
+    }
+  );
 }
 
 // WRAPPER FOR EXECUTING JUST IN TIME INITIALIZATION
