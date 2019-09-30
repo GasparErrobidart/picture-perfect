@@ -1,6 +1,6 @@
 {
   "name": "picture-perfect",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Boost your front end performance by optimizing how your images get delivered for no cost! Picture Perfect is small library including a set of tools that can help improve your site's performance.",
   "main": "main.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GasparErrobidart/Lazy-loading-size.git"
+    "url": "git+https://github.com/GasparErrobidart/picture-perfect.git"
   },
   "keywords": [
     "responsive",
